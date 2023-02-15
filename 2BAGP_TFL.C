@@ -157,7 +157,7 @@ if (((chiller1 = on & chiller2 = off & chiller3 = off) ! (chiller1 = off & chill
 endif
 //---------------------------------------------------------------------------
 else
-    bagp1Comando = Off
-	bagp2Comando = Off
-    bagp3Comando = Off
+	bagp1Comando = Off
+ 	bagp2Comando = Off
+	bagp3Comando = Off
 endif
