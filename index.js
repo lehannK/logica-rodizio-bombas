@@ -13,7 +13,7 @@ Numeric Input bagp1Falha
 Numeric Input bagp2Falha
 Numeric Input bagp3Falha
 
-Numeric Input bagp1Runtime 	'RUNTIME CALCULADO EM DIAS
+Numeric Input bagp1Runtime 	//RUNTIME CALCULADO EM DIAS
 Numeric Input bagp2Runtime
 Numeric Input bagp3Runtime
 
@@ -21,14 +21,13 @@ Numeric Output bagp1Comando
 Numeric Output bagp2Comando
 Numeric Output bagp3Comando
 
-Numeric aux1	'AUXILIARES NECESSÁRIOS POR NÃO HAVER ELSE IF NESSE COMPILADOR
+Numeric aux1	//AUXILIARES NECESSÁRIOS POR NÃO HAVER ELSE IF NESSE COMPILADOR
 Numeric aux2
 Numeric aux3
 
 Numeric runtimeMinimo
 
-'----------------------------------------------------------------------------------------------------
-'ZERA O COMANDO SE HOUVER FALHA
+//ZERA O COMANDO SE HOUVER FALHA
 if bagp1Falha = on then
 	bagp1Comando = off 
 endif 
@@ -42,10 +41,11 @@ endif
 aux1 = 0 
 aux2 = 0 
 aux3 = 0 	
-'---------------------------------------------------------------------------------------------------
-'VERIFICA SE EXISTEM DOIS OU MAIS CHILLERS LIGADOS AO MESMO TEMPO. SE SIM, IGNORA TODA A LÓGICA.
+
+//STATEMENT PRINCIPAL. SE NÃO FOR ATENDIDO, BYPASSA A LÓGICA INTEIRA 
 if (((chiller1 = on & chiller2 = off & chiller3 = off) ! (chiller1 = off & chiller2 = on & chiller3 = off) ! (chiller1 = off & chiller2 = off & chiller3 = on)) & (bbTFL1 = on ! bbTFL2 = on)) then
-	
+
+//---------------------------------------------------------------------------------------------------
 	if (chiller1 = on) then
 	runtimeMinimo = Minimum(bagp2Runtime, bagp3Runtime) 
 
@@ -82,7 +82,7 @@ if (((chiller1 = on & chiller2 = off & chiller3 = off) ! (chiller1 = off & chill
 		endif
 
 	endif
-'------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------
 	if (chiller2 = on) then
 	runtimeMinimo = Minimum(bagp1Runtime, bagp3Runtime) 
 
@@ -119,7 +119,7 @@ if (((chiller1 = on & chiller2 = off & chiller3 = off) ! (chiller1 = off & chill
 		endif
 
 	endif
-'------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------
 	if (chiller3 = on) then
 	runtimeMinimo = Minimum(bagp1Runtime, bagp2Runtime) 
 
@@ -155,7 +155,7 @@ if (((chiller1 = on & chiller2 = off & chiller3 = off) ! (chiller1 = off & chill
 			endif
 		endif
 endif
-'---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------
 else
     bagp1Comando = Off
 	bagp2Comando = Off
