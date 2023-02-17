@@ -1,53 +1,17 @@
-Numeric Input chiller1
-Numeric Input chiller2
-Numeric Input chiller3
+Numeric Input chiller1, chiller2, chiller3, bbTFL1, bbTFL2, bagp1Status, bagp2Status, bagp3Status, bagp1Falha, bagp2Falha, bagp3Falha, bagp1Runtime,bagp2Runtime, bagp3Runtime
+Numeric Output bagp1Comando, bagp2Comando, bagp3Comando
+Numeric aux1, aux2, aux3, runtimeMinimo //RUNTIME CALCULADO EM DIAS --- AUX NECESSÁRIOS POR NÃO HAVER ELSE IF NESSE COMPILADOR  
 
-Numeric Input bbTFL1
-Numeric Input bbTFL2
-
-Numeric Input bagp1Status
-Numeric Input bagp2Status
-Numeric Input bagp3Status
-
-Numeric Input bagp1Falha
-Numeric Input bagp2Falha
-Numeric Input bagp3Falha
-
-Numeric Input bagp1Runtime 	//RUNTIME CALCULADO EM DIAS
-Numeric Input bagp2Runtime
-Numeric Input bagp3Runtime
-
-Numeric Output bagp1Comando 
-Numeric Output bagp2Comando
-Numeric Output bagp3Comando
-
-Numeric aux1	//AUXILIARES NECESSÁRIOS POR NÃO HAVER ELSE IF NESSE COMPILADOR
-Numeric aux2
-Numeric aux3
-
-Numeric runtimeMinimo
-
-//ZERA O COMANDO SE HOUVER FALHA
-if bagp1Falha = on then
-	bagp1Comando = off 
-endif 
-if bagp2Falha = on then 
-	bagp2Comando = off 
-endif 
-if bagp3Falha = on then 
-	bagp3Comando = off 
-endif 
-
+//---------------------------------------------------------------------------------------------------
 aux1 = 0 
 aux2 = 0 
 aux3 = 0 	
-
-//STATEMENT PRINCIPAL. SE NÃO FOR ATENDIDO, BYPASSA A LÓGICA INTEIRA 
-if (((chiller1 = on & chiller2 = off & chiller3 = off) ! (chiller1 = off & chiller2 = on & chiller3 = off) ! (chiller1 = off & chiller2 = off & chiller3 = on)) & (bbTFL1 = on ! bbTFL2 = on)) then
-
 //---------------------------------------------------------------------------------------------------
-	if (chiller1 = on) then
-	runtimeMinimo = Minimum(bagp2Runtime, bagp3Runtime) 
+//STATEMENT PRINCIPAL, SE NÃO FOR ATENDIDO BYPASSA TODA A LÓGICA
+if (((chiller1 = on & chiller2 = off & chiller3 = off) ! (chiller1 = off & chiller2 = on & chiller3 = off) ! (chiller1 = off & chiller2 = off & chiller3 = on)) & (bbTFL1 = on ! bbTFL2 = on)) then
+	
+	if (chiller1 = on) then 
+		runtimeMinimo = Minimum(bagp2Runtime, bagp3Runtime) 
 
 		if(runtimeMinimo = bagp2Runtime & bagp2Falha = off & bagp2Status = off) then 
 			bagp2Comando = on 
@@ -119,7 +83,7 @@ if (((chiller1 = on & chiller2 = off & chiller3 = off) ! (chiller1 = off & chill
 		endif
 
 	endif
-//--------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
 	if (chiller3 = on) then
 	runtimeMinimo = Minimum(bagp1Runtime, bagp2Runtime) 
 
@@ -155,9 +119,9 @@ if (((chiller1 = on & chiller2 = off & chiller3 = off) ! (chiller1 = off & chill
 			endif
 		endif
 endif
-//---------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------
 else
-	bagp1Comando = Off
- 	bagp2Comando = Off
-	bagp3Comando = Off
+		bagp1Comando = Off
+		bagp2Comando = Off
+		bagp3Comando = Off
 endif
