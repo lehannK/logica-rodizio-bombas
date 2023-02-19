@@ -1,7 +1,6 @@
 Numeric Input chiller1, chiller2, chiller3, bbTFL1, bbTFL2, bagp1Status, bagp2Status, bagp3Status, bagp1Falha, bagp2Falha, bagp3Falha, bagp1Runtime,bagp2Runtime, bagp3Runtime
 Numeric Output bagp1Comando, bagp2Comando, bagp3Comando
 Numeric aux1, aux2, aux3, runtimeMinimo // RUNTIME CALCULADO EM DIAS --- AUX NECESSÁRIOS POR NÃO HAVER ELSE IF NESSE COMPILADOR  
-
 //---------------------------------------------------------------------------------------------------
 aux1 = 0 
 aux2 = 0 
