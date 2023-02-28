@@ -1,13 +1,13 @@
 Numeric Input chiller1, chiller2, chiller3, bbTFL1, bbTFL2, bagp1CLR, bagp2CLR, bagp3CLR, bagp1Falha, bagp2Falha, bagp3Falha, bagp1Runtime,bagp2Runtime, bagp3Runtime
 Numeric Output bagp1Comando, bagp2Comando, bagp3Comando
-Numeric aux1, aux2, aux3, runtimeMinimo 'RUNTIME CALCULADO EM DIAS --- AUX NECESSÁRIOS POR NÃO HAVER ELSE IF NESSE COMPILADOR  
+Numeric aux1, aux2, aux3, runtimeMinimo //RUNTIME CALCULADO EM DIAS --- AUX NECESSÁRIOS POR NÃO HAVER ELSE IF NESSE COMPILADOR  
 
-'---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------
 aux1 = 0 
 aux2 = 0 
 aux3 = 0 	
-'---------------------------------------------------------------------------------------------------
-'STATEMENT PRINCIPAL, SE NÃO FOR ATENDIDO BYPASSA TODA A LÓGICA
+//---------------------------------------------------------------------------------------------------
+//STATEMENT PRINCIPAL, SE NÃO FOR ATENDIDO BYPASSA TODA A LÓGICA
 if (((chiller1 = on & chiller2 = off & chiller3 = off) ! (chiller1 = off & chiller2 = on & chiller3 = off) ! (chiller1 = off & chiller2 = off & chiller3 = on)) & (bbTFL1 = on ! bbTFL2 = on)) then
 	
 	if (chiller1 = on) then 
@@ -51,7 +51,7 @@ if (((chiller1 = on & chiller2 = off & chiller3 = off) ! (chiller1 = off & chill
 		endif		
 
 	endif
-'------------------------------------------------------------
+//------------------------------------------------------------
 	if (chiller2 = on) then
 	runtimeMinimo = Minimum(bagp1Runtime, bagp3Runtime) 
 
@@ -93,7 +93,7 @@ if (((chiller1 = on & chiller2 = off & chiller3 = off) ! (chiller1 = off & chill
 		endif		
 
 	endif
-'------------------------------------------------------------
+//------------------------------------------------------------
 	if (chiller3 = on) then
 	runtimeMinimo = Minimum(bagp1Runtime, bagp2Runtime) 
 
@@ -135,7 +135,7 @@ if (((chiller1 = on & chiller2 = off & chiller3 = off) ! (chiller1 = off & chill
 		endif		
 
 	endif
-'---------------------------------------------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------
 else
 		bagp1Comando = Off
 		bagp2Comando = Off
