@@ -1,3 +1,5 @@
-# Logica_CAG
+# rodizio-bomba-adicional
 
-Código que chama uma bomba primária adicional quando a bomba secundária TFL1 ou TFL2 é acionada. Lógica implementada na central de água gelada do instituto tomie ohtake, são paulo - sp.
+Código implementado na central de água gelada do instituto tomie ohtake (são paulo - sp), que aciona uma bomba primária adicional caso a bomba secundária tfl1 ou tfl2 seja ligada, para suprir a linha de abastecimento. O código prioriza sempre o menor runtime.
+
+O código foi escrito no editor de script do EBO (schneider)
